@@ -1,0 +1,61 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if not @dashboard_id.nil? %>
+    <input type="hidden" id="post_dashboard_id" name="post[dashboard_id]" value="<%= @dashboard_id %>" />
+  <% elsif @user == current_user %>
+    <table>
+    <div class="nameFields">
+      <div class="selection">
+        <label class="usernames">Create a post for 
+          <select id="post_dashboard_id" name="post[dashboard_id]">
+            <option value="<%= @dashboard.id %>">Myself</option>
+            <% @friends.each do |friend| %>
+              <% if current_user.confirmed_friend(friend) %>
+                <option value="<%= friend.dashboard.id %>"><%= friend.name %></option>
+              <% end %>
+            <% end %>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="privacy_selection">
+      Make message private?
+      <select id="post_is_private" name="post[is_private]">
+        <option value=false>No</option>
+        <option value=true>Yes</option>
+      </select>
+    </div>
+  <% else %>
+    <input type="hidden" id="post_dashboard_id" name="post[dashboard_id]" value="<%= @dashboard.id %>" />
+  <% end %>
+
+  <% if not @reply_to.nil? %>
+    <input type="hidden" id="post_reply_to" name="post[reply_to]" value="<%= @reply_to %>" />
+  <% end %>
+
+  <table>
+    <tr>
+      <td class="textarea">
+        <div class="field">
+          <%= f.text_area :content, :placeholder => "Write a message" %>
+        </div>
+      </td>
+      <td class="actions">
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </td>
+    </tr>
+  </table>
+<% end %>

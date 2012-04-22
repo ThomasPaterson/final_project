@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Reminder for <%= @user.name %></h1>
+    <p>
+    	<% if @reminder.content == "" %>
+          Reminder at <%= @reminder.time %>.<br/>
+        <% else %>
+          You have <%= @reminder.content %> at <%= @reminder.time %>.<br/>
+        <% end %>
+    </p>
+    <p>
+      To check your reminders, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>
+
+Reminder for <%= @user.name %>
+===============================================
+ 
+<% if @reminder.content.nil?%>
+  Reminder at <%= @reminder.time %>.<br/>
+<% else %>
+  You have <%= @reminder.content %> at <%= @reminder.time %>.<br/>
+<% end %>

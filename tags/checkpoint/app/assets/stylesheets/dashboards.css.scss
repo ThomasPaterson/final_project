@@ -1,0 +1,93 @@
+// Place all the styles related to the dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dashboard .content {
+    background-color: white;
+    top: 5px;
+    width: 80%;
+    float: left;
+}
+
+.dashboard .content h1 {
+    margin: 0 0 1em 0;
+}
+
+.dashboard .content table {
+	margin: 0 2em 0 0;
+    width: 95%;
+}
+
+.dashboard .content .textarea {
+    width: 90%;
+}
+
+.dashboard .content .actions {
+    width: 10%;
+}
+
+.dashboard .content .field textarea {
+	border:1px solid #999999;
+    width: 95%;
+    height: 5em;
+    margin:5px 0;
+    padding:3px;
+    resize: none;
+}
+
+.dashboard .content .post_list {
+}
+
+.dashboard .content .post_list .post_info {
+    padding: 0.5em 0 0.5em 0;
+    width: 95%;
+    max-width: 95%;
+    word-wrap: break-word;
+    border-top: 1px solid #999999;
+    font-style:italic;
+}
+
+.dashboard .content .post_list .post_info .avatar {
+    float: left;
+    padding: 0 0.5em 0 0;
+}
+
+.dashboard .content .post_list .post_content{
+	padding: 0 0 1em 0;
+	width: 95%;
+	max-width: 95%;
+	word-wrap: break-word;
+	border-bottom: 1px solid #999999;
+}
+
+.dashboard .taskbar {
+    background-color: white;
+    top: 5px;
+    width: 20%;
+    height: 100%;
+    float: right;	
+}
+
+.dashboard .taskbar .upcoming_events {
+	table-layout: fixed;
+}
+
+.dashboard .taskbar .upcoming_event td {
+    padding: 0;   
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dashboard .taskbar .reminders {
+    table-layout: fixed;
+}
+
+.dashboard .taskbar .reminder td {
+    padding: 0;   
+}
+
+.dashboard .taskbar div {
+    margin: 0 0 1em 0;
+}
+ 

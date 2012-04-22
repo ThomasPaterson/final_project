@@ -1,0 +1,11 @@
+<div class="listpages">
+<% if @user.id == current_user.id %>
+<h1>New List</h1>
+<% else %>
+<h1>New List for <%= @user.name %></h1>
+<% end %>
+
+<%= render 'form' %>
+
+
+</div>

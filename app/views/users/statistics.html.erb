@@ -1,0 +1,50 @@
+<div class="statspage">
+	<h1>Statistics:</h1>
+	
+	<div class="datetime">
+
+		<%= link_to "<", statistics_user_path(current_user, :linefilter => @linefilter, :tagfilter => @tagfilter, :eventfilter => @eventfilter, :listfilter => @listfilter, :time_unit => @time_units, :time => @time+1) %>
+			
+		<% if @time_units == "Week" %>
+			<%= nice_format_no_time((@time+1).weeks.ago) %> To <%= nice_format_no_time(@time.weeks.ago) %> 
+		<% elsif @time_units == "Month" %>
+			<%= I18n.t("date.month_names")[@time.weeks.ago.to_date.month] %>
+		<% else %>
+			<%= (@time).years.ago.year %> 
+		<% end %>
+			
+		<% if @time != 0 %>
+			<%= link_to ">", statistics_user_path(current_user, :linefilter => @linefilter, :tagfilter => @tagfilter, :eventfilter => @eventfilter, :listfilter => @listfilter, :time_unit => @time_units, :time => @time-1) %>
+		<% end %>
+		
+	</div>
+	
+<table>
+  <tr>	
+  	<td>
+	<% if @tag_counts.count > 0 %>
+		<% if !@linefilter %>
+			<%= render :partial => 'bar_graph', :locals => {:tag_counts => @tag_counts} %>
+		<% else %>
+		  <%= render :partial => 'line_graph', :locals => {:tag_counts => @tag_counts, :colors => @colors} %>
+	
+		<% end %>
+	
+	<% end %>
+	</td>
+	<td>	
+	<div class="float">	
+		<div class="tab">
+			<%= link_to "Tag Comparision", statistics_user_path(current_user, :linefilter => "false", :tagfilter => @tagfilter) %>
+			<%= link_to "Tag Frequency", statistics_user_path(current_user, :linefilter => "true", :tagfilter => @tagfilter) %>
+		</div>
+		
+		<%= render 'filter_form' %>
+	</div>
+	</td>
+  </tr>
+</table>
+	
+	<%= @tag_check %> </br>
+
+</div>

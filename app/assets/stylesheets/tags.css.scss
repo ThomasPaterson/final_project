@@ -1,0 +1,234 @@
+// Place all the styles related to the tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tagpages {
+  padding: 10px 0 0 10px;
+}
+
+.tagpages h1 {
+  padding: 0 0 1em 0;
+}
+
+.tagpages tr {
+  border-bottom: solid 1px black;
+}
+
+.tagpages table {
+  width: 80%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+#head {
+  border-bottom: solid 1px black;
+}
+
+.tagpages th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.taghomepage td.meta {
+  font-size: larger;
+  font-weight: bold;
+  width: 175px;
+  padding: 5px;
+}
+
+.taghomepage td.Show {
+  text-align: center;
+  font-size: x-large;
+  width: 600px;
+}
+
+.taghomepage div.tag_date {
+  font-size: smaller;
+  font-weight: normal;
+}
+
+.taghomepage td {
+  border: 1px solid #87AFC7;
+}
+
+
+.taghomepage tr {
+  background-color: #F4FFFF;
+  transition-property: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+}
+
+.taghomepage tr:hover {
+  background-color: #FFFFFF;
+}
+
+.taghomepage table {
+  margin-bottom: 5px;
+}
+
+
+/* ---- CSS for tag forms ---- */
+
+.tagpages a.addField, a.removeField {
+  font-style: italic;
+}
+
+.tagpages div.actions {
+  margin: 10px 0 10px 0;
+}
+
+.tagpages div.deleteactions {
+  margin: 3px 0 8px 0;
+}
+
+.tagpages div.editfield {
+  width: 300px;
+  padding: 5px 0 5px 5px;
+  border: 1px solid #87AFC7;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.tagpages div.editfield fieldset {
+  margin-top: 5px;
+}
+
+.tagpages div.nameFields {
+  margin-top: 20px;
+}
+
+.tagpages div.nameFields div.selection {
+  margin: 5px 0 5px 0;
+}
+
+.tagpages div.selection select:hover {
+  background-color: #E0FFFF;
+}
+
+.tagpages form.new_item {
+  margin-top: 5px;
+}
+
+.tagpages input {
+  transition-property: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -webkit-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+}
+
+.tagpages input:focus {
+  background-color: #E0FFFF;
+}
+
+.tagpages li {
+  margin-left: 15px;
+  tag-style-type: circle;
+  transition-property: all ease-out 0.2s;
+  -moz-transition: all ease-out 0.2s;
+  -webkit-transition: all ease-out 0.2s;
+  -o-transition: all ease-out 0.2s;
+}
+
+.tagpages li:hover {
+  color: #000099;
+}
+
+.tagpages h2#newitemsh2 {
+  margin-top: 20px;
+}
+
+#tags_filter {
+  padding-left: 34.3em;
+}
+
+#tags_filter #search_form {
+  float: left;
+}
+
+#tags_filter #search_clear {
+  float: right;
+}
+/* ---- CSS for item forms ---- */
+
+
+.tagpages {
+  padding: 10px 0 0 10px;
+}
+
+.tagpages h1 {
+  padding: 0 0 1em 0;
+}
+
+.tagpages table {
+  width: 80%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.tagpages th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.taghomepage td.meta {
+  font-size: larger;
+  font-weight: bold;
+  width: 175px;
+  padding: 5px;
+}
+
+.tagshow td.item_contents {
+  text-align: center;
+  width: 600px;
+  
+}
+
+.tagshow td.item_contents a {
+  opacity: 0.0;
+  
+}
+
+.tagshow td.item_contents:hover a {
+  opacity: 1.0;
+  
+}
+
+.tagshow .item_name {
+  font-size: x-large;
+}
+
+.tagshow .tags {
+  font-size: x-small;
+}
+
+.tagshow td {
+  border: 1px solid #87AFC7;
+}
+
+
+.tagshow tr {
+  background-color: #F4FFFF;
+  transition-property: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+}
+
+.tagshow tr:hover {
+  background-color: #FFFFFF;
+}
+
+.tagshow table {
+  margin-bottom: 5px;
+}
+
+

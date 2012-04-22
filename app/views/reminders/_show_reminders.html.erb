@@ -1,0 +1,50 @@
+<% @reminders.each do |reminder| %>
+	
+  <div class="reminder">
+    <div class="date">
+      <% if reminder.time.in_time_zone(@user.time_zone).to_date == Date.tomorrow %>
+        <br />Tomorrow<br />
+      <% elsif reminder.time.in_time_zone(@user.time_zone).to_date == Date.today %>
+        <br />Today<br />
+      <% else %>
+        <br /><%= nice_format_no_time(reminder.time.to_date ) %><br />
+      <% end %>
+    </div>
+  </div>
+  <div class="reminder">
+
+    <div class="meta">
+      <% if reminder.user_id == reminder.poster_id%>
+        <%= avatar_for(current_user, 50) %>
+        Me
+      <% elsif reminder.user_id == current_user.id %>
+        <%= avatar_for User.find(reminder.poster_id), 50 %>
+        From: <%= link_to "#{User.find(reminder.poster_id).name}", user_path(User.find(reminder.poster_id)) %>
+      <% else %>
+        <%= avatar_for User.find(reminder.user_id), 50 %>
+        To: <%= link_to "#{User.find(reminder.user_id).name}", user_path(User.find(reminder.user_id)) %>
+      <% end %>
+    </div>
+
+    <div class="Show">
+      <b><%= link_to "#{reminder.name.slice(0, 30)}", user_reminder_path(@user, reminder), :class => "modalbox", :remote => true  %></b>
+      
+
+      <br />
+      <div class="reminder_content">
+        <% if reminder.content.length  < 50 %>
+          <sub> <%= reminder.content %> </sub>
+        <% else %>
+          <sub> <%= reminder.content.slice(0, 50) %> </sub>
+        <% end %>
+      </div> 
+    </div>
+
+    <div class="tasks">
+  	    <%= link_to 'Edit', edit_user_reminder_path(@user, reminder), :class => "modalbox", :remote => true %>
+  	    <%= link_to "Delete", {:action => "destroy_reminder", :id => reminder, :user_id => reminder.user_id}, :onclick => "return confirm('Are you sure?')" %>
+    </div>
+  	  
+    <br />
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+
+<% @posts.each do |post| %>
+  <% if not post.is_private or @user == current_user or post.user_id == current_user.id or admin? %>
+    <div class="post_info">
+      <div class="avatar"><%= avatar_for User.find(post.user_id) %></div>
+      <div class="meta">
+        <% if post.user_id == current_user.id %>
+          <%= link_to "You", current_user %> posted
+        <% else %>
+          Posted By <%= link_to User.find(post.user_id).name, User.find(post.user_id) %>
+        <% end %>
+        
+        on <%= nice_format(post.created_at, current_user.time_zone) %>
+
+        <% if post.created_at != post.updated_at %>
+          <p class="last_updated">Last updated on <%= nice_format(post.updated_at, current_user.time_zone) %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="post_content">
+      <% if not post.reply_to.nil? and Post.where("id = ?", post.reply_to).count > 0 %>
+        <% @parent_post = Post.find(post.reply_to) %>
+        <% if @parent_post.user_id == current_user.id %>
+          <%= link_to "You", current_user %> said:
+        <% else %>
+          <%= link_to User.find(@parent_post.user_id).name, User.find(@parent_post.user_id) %> said:
+        <% end %>
+        <div class="parent_post"><%= @parent_post.content %></div><br />
+      <% end %>
+      <div class="post">
+        <%= post.content %>
+      </div>
+      <div class="post_tasks">
+        <% if post.user_id == current_user.id or admin? %>
+          <% if admin? %>
+            <%= link_to 'Reply', new_post_path(:dashboard_id => User.find(post.user_id.to_i), :reply_to => post.id), :class => "modalbox" %> | 
+          <% end %>
+          <%= link_to 'Edit', edit_post_path(post), :class => "modalbox" %> | 
+          <%= link_to "Delete", {:controller => "posts", :action => "destroy_post", :id => post}, :onclick => "return confirm('Delete this post?')", :method => :delete %>
+        <% else %>
+          <%= link_to 'Reply', new_post_path(:dashboard_id => User.find(post.user_id.to_i), :reply_to => post.id), :class => "modalbox" %> | 
+          <% if @user == current_user %>
+            <%= link_to "Delete", {:controller => "posts", :action => "destroy_post", :id => post}, :onclick => "return confirm('Delete this post?')", :method => :delete %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="<%= asset_path('favicon.ico') %>" type="image/ico" />
+    <%= csrf_meta_tag %>
+    <%= render 'layouts/stylesheets' %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+  <% if not signed_in? %>
+    <div class="notsignedin">
+  <% end %>
+      <%= render 'layouts/header' %>
+
+
+      <div id="container">
+        <table class="container">
+        <tr>
+        <% if signed_in? %>
+          <td class="left">
+            <%= render 'layouts/sidebar' %>
+          </td>
+        <% end %>
+          <td class="right">
+            <% flash.each do |name, msg| %>
+              <%= content_tag :div, msg, :id => "flash_#{name}" %>
+            <% end %>
+            <%= yield %>
+
+            <div class="debug">
+              <%= debug(params) if Rails.env.development? %>
+            </div>
+          </td> 
+        </tr>
+      </table>
+      </div>
+
+
+      
+  <% if not signed_in? %>
+    </div>
+  <% end %>    
+  </body>
+</html>

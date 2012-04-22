@@ -1,0 +1,54 @@
+ <% if current_user.following.count == 0 %>
+  You haven't <%= link_to "added", add_friend_user_path(current_user) %> any friends!
+ <% end %>
+ <% @users.each do |user| %>  
+  <% unless current_user?(user) or user.permission_level == 10 %>
+  
+  	<div class="friend">
+      <div class="meta">
+        <%= render user %>
+      </div>
+      
+    	<% if current_user.following?(user) %>
+    	
+    	  <% if current_user.confirmed_friend(user) %>
+
+          <div class="tasks">
+        		<%= form_for current_user.relationships.find_by_follower_id(current_user),
+               	:html => { :method => :delete }, :remote => true do |f| %>
+    			     <div class="actions"><%= f.submit "Unfollow" %></div>
+            <% end %>
+          </div>
+
+          <div class="friend_tasks">
+            <%= link_to "Add Lists", new_user_list_path(user) %> | 
+            <%= link_to "View Lists", user_lists_path(user) %> | 
+
+            <%= link_to "View Events", user_events_path(user) %> | 
+
+            <%= link_to "Add Reminder", new_user_reminder_path(user), :class => "modalbox", :remote => true %> | 
+            <%= link_to "View Reminders", user_reminders_path(user) %>
+          </div>
+        <% else %>
+
+          <div class="tasks">
+            <%= form_for current_user.relationships.find_by_follower_id(current_user),
+               	:html => { :method => :delete }, :remote => true do |f| %>
+              <div class="actions"><%= f.submit "Cancel Invite" %></div>
+            <% end %>
+          </div>
+  	 
+        <% end %>
+        
+      <% else %>  
+        <div class="tasks">
+          <%= form_for current_user.relationships.build(:followed_id => user.id), :remote => true do |f| %>
+            <div><%= f.hidden_field :followed_id %></div>
+            <div class="actions"><%= f.submit "Follow" %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %> 
+
+<% end %>

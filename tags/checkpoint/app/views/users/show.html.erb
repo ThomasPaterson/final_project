@@ -1,0 +1,32 @@
+<p>
+  <b>Username:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>First Name:</b>
+  <%= @user.fname %>
+</p>
+
+<p>
+  <b>Last Name:</b>
+  <%= @user.lname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Time zone:</b>
+  <%= @user.time_zone %>
+</p>
+
+<p>
+  <b>Permission level:</b>
+  <%= @user.permission_level %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %>

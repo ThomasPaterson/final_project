@@ -1,0 +1,11 @@
+ <% for item in @items %>  
+
+     
+    <%= render item %>
+
+	<%= form_for item,
+	             :html => { :method => :delete } do |f| %>
+	  <div class="actions"><%= f.submit "Delete Item" %></div>
+	<% end %>
+
+ <% end %> 

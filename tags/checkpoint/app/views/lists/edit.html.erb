@@ -1,0 +1,22 @@
+<div class="listpages">
+<h1>Adding items to <%= @list.name %> for <%= @user.name %></h1>
+
+
+<%= render 'show_items' %>
+
+<%= form_for(@item) do |f| %>
+	
+  <input type="hidden" id="item_user_id" name="item[user_id]" value="<%= current_user.id %>" />
+  <input type="hidden" id="item_list_id" name="item[list_id]" value="<%= @list.id %>" />
+  
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  
+  <div class="actions"><%= f.submit "Add Item", :remote => true %></div>
+<% end %>
+
+<%= link_to 'Show', @list %> |
+<%= link_to 'Back', lists_path %>
+</div>

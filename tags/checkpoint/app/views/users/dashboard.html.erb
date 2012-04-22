@@ -1,0 +1,85 @@
+<% if signed_in? %>
+  <div class="dashboard">
+
+    <div class="content">
+      <h1>My Dashboard</h1>
+
+      <h2> New Post </h2>
+      <%= render 'posts/form' %>
+
+      <h2> Latest Posts </h2>
+
+      <p>
+        <b>Last updated on:</b>
+        <%= nice_format(@dashboard.updated_at, current_user.time_zone) %>
+      </p>
+
+      <div class = "flickr_pagination">
+       <%=will_paginate @posts %>
+      </div>
+
+      <div class="post_list">
+
+        <% @posts.each do |post| %>
+          <div class="post_info">
+            <div class="avatar"><%= gravatar_for User.find(post.user_id) %></div>
+            <div class="meta">
+              <% if post.user_id == current_user.id %>
+                You posted
+              <% else %>
+                Posted By <%= User.find(post.user_id).name %>
+              <% end %>
+              on <%= nice_format(post.created_at, current_user.time_zone) %>
+
+              <% if post.created_at != post.updated_at %>
+                <%= nice_format(post.updated_at, current_user.time_zone) %>
+              <% end %>
+            </div>
+          </div>
+          <div class="post_content"><%= post.content %></div>
+        <% end %>
+      </div>
+
+      <div class = "flickr_pagination">
+       <%=will_paginate @posts %>
+      </div>
+    </div>
+    
+    <div class="taskbar">
+      <div>
+        <h2>Upcoming Events</h2>
+        <% if @events.count > 0 %>
+          <% @events.each do |event| %>
+            <table id="upcoming_events">
+            <tr class="upcoming_event">
+              <td><%= dash_nice_format(event.start_at, current_user.time_zone) %>: </td>
+              <td><%= event.name %></td>
+            </tr>
+            </table>
+          <% end %>
+        <% else %>
+          You have no upcoming events.
+        <% end %>
+      </div>
+
+      <div>
+        <h2>Reminders</h2>
+        <% if @reminders.count > 0 %>
+          <% @reminders.each do |reminder| %>
+            <table id="reminders">
+            <tr class="reminder">
+              <td><%= dash_nice_format(reminder.time, current_user.time_zone) %>: </td>
+              <td><%= reminder.name %></td>
+            </tr>
+            </table>
+          <% end %>
+        <% else %>
+          You have no pending reminders.
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p>Welcome to our site!</p>
+  <p>You need to be logged in to access site features.</p>
+<% end %>

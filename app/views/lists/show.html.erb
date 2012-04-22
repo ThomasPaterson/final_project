@@ -1,0 +1,18 @@
+<div class="listpages">
+
+  <table id="head">
+    <tr>
+      <td id="title"><h1><%= @list.name %></h1></td>
+      <td id="edit"><%= link_to 'Edit', edit_user_list_path(@user, @list) %></td>
+    </tr>
+  </table>
+
+  <div class="listshow">
+	
+  <table id="item_list">
+    <%= render 'show_items' %><br />
+  </table>
+
+
+  </div>
+</div>

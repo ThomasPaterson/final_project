@@ -1,0 +1,32 @@
+<div class="reminderpages">
+<div class="content">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @reminder.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @reminder.content %>
+</p>
+
+<p>
+  <b>Creator:</b>
+  <% if current_user = User.find(@reminder.poster_id) %>
+  Me
+  <% else %>
+    <%= User.find(@reminder.poster_id)%>
+  <% end %>
+
+</p>
+
+
+<p>
+  <b>Time:</b>
+  <%= @reminder.time %>
+</p>
+
+</div>
+</div>

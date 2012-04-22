@@ -1,0 +1,21 @@
+<% if admin? %>
+  <div class="edit_permissions">
+    <div class="content">
+      <h1>Edit Permissions for <%= @user.name %></h1>
+      <%= form_for @user, :url => permissions_update_user_path(@user)  do |f| %>
+
+        <br/>
+        <table>
+        <tr><td>Current permission level: </td><td><%= @user.permission_level %></td></tr>
+        <tr>
+          <td>New permission level: </td>
+          <td><%= f.number_field :permission_level, {:in => 1..2} %></td>
+        </tr>
+        </table>
+
+        <br/>
+        <p><%= f.submit "Update" %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

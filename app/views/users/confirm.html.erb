@@ -1,0 +1,11 @@
+<div class="friendpages">
+    <div class="content">
+    	<h1>Confirm/Cancel Invitations</h1>
+
+		<%= render 'confirm_form' %><br /> 
+		
+		<div class="flickr_pagination">
+			<%=will_paginate @users %>
+		</div>
+	</div>
+</div>

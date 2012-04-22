@@ -1,0 +1,38 @@
+<div class="all_users">
+  <div class="content">
+    <h1>Member List</h1>
+    
+    <div class = "flickr_pagination">
+      <%=will_paginate @users %>
+    </div>
+    <table class="users" summary="User List">
+      <tr>
+        <th>Member</th>
+        <th></th>
+        <% if admin? %>
+          <th>Permission Level</th>
+        <% end %>
+        <th>Account Created On</th>
+      </tr>
+    <% @users.each do |user| %> 
+      <tr>  
+        <td class="user"><%= avatar_for user, 30 %></td>
+        <td><%= link_to user.name, user %></td>
+        <td><%= readable_permission_level(user.permission_level) %></td>
+        <td><%= nice_format(user.created_at, user.time_zone) %></td>
+        <% if user.permission_level == 10 %>
+          <td><%= link_to "Unban User", unban_user_path(user), :onclick => "return confirm('Unban #{user.name}?')"  %></td>
+        <% else %>
+          <td><%= link_to "Ban User", ban_user_path(user), :onclick => "return confirm('Ban #{user.name}?')"  %></td>
+        <% end %>
+        <td><%= link_to "Edit Permissions", edit_permissions_user_path(user), :class => "modalbox" %></td>
+        <td><%= link_to "Delete", {:action => "destroy_user", :id => user}, :onclick => "return confirm('Are you sure?')" %></td>
+      </tr>
+     <% end %>
+      </tr>
+    </table>
+    <div class = "flickr_pagination">
+      <%=will_paginate @users %>
+    </div>
+  </div>
+</div>

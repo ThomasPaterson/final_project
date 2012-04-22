@@ -1,0 +1,68 @@
+// Place all the styles related to the Statistics here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.statspage {
+  padding: 10px 0 0 10px;
+}
+
+.statspage h1 {
+  padding: 0 0 1em 0;
+}
+
+.statspage div.datetime {
+  margin: 0 0 10px 0px;
+  font-weight: bold;
+  font-size: 150%;
+  width: 650px;
+  text-align: center;
+}
+
+.statspage div.tab {
+  margin: 0 0 35px 0;
+}
+
+.statspage div.tab a {
+  color: #555;
+  transition-property: all ease-out 0.2s;
+  -moz-transition: all ease-out 0.2s;
+  -webkit-transition: all ease-out 0.2s;
+  -o-transition: all ease-out 0.2s;
+  margin: 0 15px 0 0;
+}
+
+.statspage div.tab a:hover {
+  background-color: transparent;
+  color: #bbb;
+}
+
+.statspage div.filter_info p {
+  margin: 5px 0 10px 0;
+}
+
+.statspage div.nameFields {
+  margin: 20px 0 5px 0;
+  font-weight: bold;
+}
+
+.statspage div#chartArea {
+  clear: none;
+}
+
+.statspage div.float {
+  float: right;
+  margin: 50px 10px 0 0;
+}
+
+.statspage div.nameFields div.selection {
+  font-weight: normal;
+  margin: 3px 0 3px 0;
+}
+
+.statspage form.edit_user {
+  margin-top: -10px;
+}
+
+.statspage div.actions {
+  margin: 15px 0 0 0;
+}

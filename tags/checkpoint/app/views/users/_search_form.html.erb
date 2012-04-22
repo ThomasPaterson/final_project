@@ -1,0 +1,12 @@
+ <%= form_for @search, :url => { :action => "add_friend"}, :method => "get", :remote => true do |f| %>
+  <%= f.error_messages %>
+  
+  <div class="field">
+  <%= f.label :name, "Name or Email" %><br />
+  <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+  <%= f.submit "Search for Friends" %>
+  </div>
+<% end %>
+  

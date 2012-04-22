@@ -1,0 +1,124 @@
+
+/* ---------------- CSS for user profile ---------------- */
+
+.profile {
+  padding: 10px 0 0 10px;
+}
+
+.profile p {
+  padding: 2px 0 2px 0;
+}
+
+.profile .content {
+  background-color: white;
+  top: 5px;
+  width: 100%;
+  float: left;
+}
+
+.profile .content h1 {
+  margin: 0 0 0.25em 0;
+  word-wrap: break-word;
+  line-height: 25px;
+}
+
+.profile .content h2 {
+  margin: 1em 0 0 0;
+}
+
+.profile .content p {
+  margin: 1px 0 4px 0;
+}
+
+.profile .content table {
+	margin: 0 2em 0 0;
+    width: 95%;
+}
+
+.profile .content .textarea {
+    width: 90%;
+}
+
+.profile .content .actions {
+    width: 10%;
+}
+
+.profile .content h1 #edit_relationship .edit_relationship input[type="submit"] {
+	padding: 5px;
+}
+
+.profile .content .field textarea {
+	border:1px solid #999999;
+    width: 98%;
+    height: 2.5em;
+    margin: 5px 0 5px -5px;
+    padding: 0.5em;
+    resize: none;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+}
+
+.profile .content .field textarea:focus {outline: none}
+
+.profile .content .post_list {
+}
+
+.profile .content .post_list .post_info {
+    padding: 0.5em 0 0.5em 0;
+    width: 95%;
+    max-width: 95%;
+    word-wrap: break-word;
+    border-top: 1px solid #999999;
+    font-style:italic;
+}
+
+.profile .content .post_list .post_info .avatar {
+    float: left;
+    padding: 0 0.5em 0 0;
+}
+
+.profile .content .post_list .post_content {
+    padding: 0 0 2em 0;
+    width: 95%;
+    max-width: 95%;
+    word-wrap: break-word;
+    border-bottom: 1px solid #999999;
+}
+
+.profile .content .post_list .post_content .parent_post {
+    word-wrap: break-word;
+    margin: 0 5em 0 5em;
+    padding: 0.5em;
+    border: 1px solid #999999;
+}
+
+.profile .content .post_list .post_content .post {
+    word-wrap: break-word;
+    margin: 0 0 -1em 4.4em;
+}
+
+.profile .content .post_list .post_content .post_tasks {
+    float: right;
+}
+
+.profile .content .user_info {
+    table-layout: fixed;
+}
+
+.profile .content .user_info form {
+    display: inline;
+}
+
+.profile .content .avatar_td {
+    width: 17%;
+}
+
+.profile .content .meta_td {
+    width: 83%;
+    text-align: left;
+}
+
+.profile .content .meta_td .edit_link {
+    font-size: 10pt;
+}

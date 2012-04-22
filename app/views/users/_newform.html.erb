@@ -1,0 +1,51 @@
+<%= form_for(@user, :html => { :honeypot => true }) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <% if request.fullpath.include? "signup" or request.fullpath.include? "users"  %>
+      *Username<br /> 
+      <%= f.text_field :name %>
+    <% else %>
+      <br /><p>Name<br /><%= @user.name %></p>
+      <input type="hidden" id="name" name="user[name]" value="<%= @user.name %>" />
+    <% end %>
+  </div>
+  <div class="field">
+    *Email<br /> 
+    <%= f.text_field :email %>
+  </div>  
+  <div class="field">
+    First Name<br />
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    Last Name<br />
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    *Time Zone<br />
+    <%= f.time_zone_select :time_zone, nil, :default => "Pacific Time (US & Canada)" %>
+  </div>  
+  <div class="field">
+    *Password<br /> 
+    <%= f.password_field :password %>
+  </div>
+
+  
+  <div class="field">
+    *Password Confirmation<br /> 
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <p> (*) required fields </p> <br />
+
+    <input type="hidden" id="permission_level" name="user[permission_level]" value="2" />
+
+    
+  <div class="actions">
+    <% if request.fullpath.include? "signup"  %>
+      <%= f.submit 'Sign up', {:class => 'submit_button'} %>
+    <% else %>
+      <%= f.submit 'Save', {:class => 'submit_button'} %>
+    <% end %>
+  </div>
+
+<% end %>

@@ -1,0 +1,41 @@
+<%= form_for(@list) do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <input type="hidden" id="list_user_id" name="list[user_id]" value="<%= @user.id %>" />
+  <input type="hidden" id="list_poster_id" name="list[poster_id]" value="<%= current_user.id %>" />
+  <input type="hidden" id="list_parent_id" name="list[parent_id]" value="0" />
+  <div class="nameFields">
+  	
+      Send other users this list:<br />
+      <div class="selection"><label class="usernames">Username: <select name="invitee[]">
+          <option value="">Select a friend to add</option>
+        <% @friends.each do |friend| %>
+          <% if current_user.confirmed_friend(friend) %>
+            <option value="<%= friend.name %>"><%= friend.name %></option>
+          <% end %>
+        <% end %>
+      </select></label></div>
+  </div>
+  <%= link_to 'Add another invitee', "#", :class => "addField", :onclick => "return false;" %><br />
+
+  
+  <input type="hidden" id="user_id" name="[user_id]" value="<%= @user.id %>" />
+  <div class="actions">
+    <%= f.submit "Add Items"%>
+  </div>
+<% end %>

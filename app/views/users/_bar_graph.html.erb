@@ -1,0 +1,27 @@
+<div id="chart"></div>
+<% @height = 40*tag_counts.size %>
+<% if @height < 500 %>
+   <% @height = 500 %>
+<% end %>
+
+<%= raw Seer::init_visualization -%>
+<%= raw Seer::visualize(
+      tag_counts, 
+      :as => :bar_chart,
+      :in_element =>'chart', 
+      :series => {
+        :series_label => 'name',
+        :data_method => 'count'
+      },
+      :chart_options => {
+        :height => @height,
+        :width => 600 ,
+        :orientation => 'horizontal',
+        :legend => 'none',
+        :axis_font_size => 14,
+        :colors => "[{color:'#4400ef', darker:'#660000'}]",
+        :title_x => 'count',
+        :title_y => 'name'
+      }
+    )
+ -%>

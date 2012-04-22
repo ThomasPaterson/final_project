@@ -1,0 +1,73 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="event_name">
+    <%= f.label :event_name, {:class => "form_label"} %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="event_description">
+    <%= f.label :description, {:class => "form_label"}  %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="all_day_info">
+    <p>
+      <%= f.check_box :all_day %>
+      This is an all-day event<br />
+    </p>
+  </div>
+  <div class="privacy_info">
+    <p>
+      <%= f.check_box :is_public %>
+      Share this event with everyone<br />
+    </p>
+  </div>
+  <div class="start_info">
+    <p>
+      When will this event start?<br />
+      <%= f.date_select :start_at, :default => {:day => @day, :month => @month} %>
+    </p>
+    <p>
+      What time?<br />
+      <%= f.time_select :start_at, :ignore_date => true %>
+    </p>
+  </div>
+  <div class="end_info">
+    <p>
+      When will this event end?<br />
+      <%= f.date_select :end_at, :default => {:day => @day, :month => @month} %>
+    </p>
+    <p>
+      What time?<br />
+      <%= f.time_select :end_at, :ignore_date => true %>
+    </p>
+ 
+  <div class="reminder_info">
+    <p>
+  <%= check_box_tag("check", "reminder") %>Add Reminder<br />
+    </p>
+    
+
+  </div>
+
+  <input type="hidden" id="event_user_id" name="event[user_id]" value="<%= @user.id %>" />
+  <input type="hidden" id="event_poster_id" name="event[poster_id]" value="<%= current_user.id %>" />
+
+
+  <div class="actions">
+    <% if request.fullpath.include? "new"  %>
+      <%= f.submit 'Create Event', {:class => 'submit_button'} %>
+    <% else %>
+      <%= f.submit 'Update Event', {:class => 'submit_button'} %>
+    <% end %>
+  </div>
+<% end %>

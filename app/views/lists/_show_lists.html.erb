@@ -1,0 +1,25 @@
+<% @lists.each do |list| %>
+  <tr class="list">
+  	<td class="meta">
+    	<% if User.find(list.poster_id) == current_user %>
+    	  Me
+    	<% else %>
+    	  <%= render User.find(list.poster_id) %>
+    	<% end %>
+        
+      <div class="list_date">
+        <sub> Created on <%= nice_format_no_time(list.created_at) %> </sub>
+    	</div>
+    </td>
+
+    <td class="Show">
+      <b><%= link_to "#{list.name}", user_list_path(@user, list) %></b>
+    </td>
+  	  
+    <td class="tasks">
+      <%= link_to 'Edit', edit_user_list_path(@user, list) %>
+      <%= link_to "Delete", {:action => "destroy_list", :id => list, :user_id => list.user_id}, :onclick => "return confirm('Are you sure?')" %>
+    </td>
+  </tr>
+<% end %>
+

@@ -1,0 +1,29 @@
+ <% for user in @users %>  
+
+      <% unless current_user?(user) %>
+      
+      	<%= render user %>
+      	<% if current_user.following?(user) %>
+      	    <%= link_to "Add Reminder", new_user_reminder_path(user), :class => "modalbox", :remote => true %>
+            <%= link_to "View Reminders", user_reminders_path(user) %>
+            
+      	    <%= link_to "Add Lists", new_user_list_path(user) %>
+      	    
+            <%= link_to "View Lists", user_lists_path(user) %>
+      		<%= form_for current_user.relationships.find_by_follower_id(current_user),
+             	:html => { :method => :delete }, :remote => true do |f| %>
+  			<div class="actions"><%= f.submit "Unfollow" %></div>
+	        <% end %>
+	        
+	    <% else %>
+	    
+	    <%= form_for current_user.relationships.build(:followed_id => user.id), :remote => true do |f| %>
+  		<div><%= f.hidden_field :followed_id %></div>
+  		<div class="actions"><%= f.submit "Follow" %></div>
+		<% end %>
+		
+	  <% end %>
+		
+	 <% end %> 
+
+  <% end %> 

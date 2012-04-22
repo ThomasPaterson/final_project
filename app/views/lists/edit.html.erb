@@ -1,0 +1,38 @@
+<div class="listpages">
+	
+  <table id="head">
+    <tr>
+      <td id="title"><h1>Editing <%= @list.name %></h1></td>
+      <td id="edit"><%= link_to 'View', user_list_path(@user, @list) %></td>
+    </tr>
+  </table>
+
+  <div class="listshow">
+	
+  <table id="item_list">
+    <%= render 'show_items' %><br />
+  </table>
+
+  </div>
+  
+  <h2 id="newitemsh2"> New item: </h2>
+  <%= form_for(@item) do |f| %>
+	
+    <input type="hidden" id="item_user_id" name="item[user_id]" value="<%= current_user.id %>" />
+    <input type="hidden" id="item_list_id" name="item[list_id]" value="<%= @list.id %>" />
+  
+    <div class="editfield">
+      <%= f.label :content %>  
+      <%= f.text_field :content, :autofocus => true %><br />
+    
+	  <fieldset>
+      <%= f.label :tag %>
+		  <input id="tag_text" name="tag[text]" type="text" />	
+	  </fieldset>
+    </div>
+  
+    <div class="actions"><%= f.submit "Add Item", :remote => true %></div>
+  <% end %>
+
+
+</div>

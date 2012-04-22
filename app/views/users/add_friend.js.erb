@@ -1,0 +1,7 @@
+$("#users_search_results").html("<ul class='users'><%= escape_javascript(render "add_form" ) %></ul>");
+
+// needed to retain the ability to display lightboxes when filtering lists
+$('.modalbox').facebox({  
+loadingImage : '<%= asset_path('loading.gif') %>',  
+closeImage   : '<%= asset_path('closelabel.gif') %>',  
+});

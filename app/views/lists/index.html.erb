@@ -1,0 +1,34 @@
+<div class="index">
+	<table id="index_header">
+	  <tr>
+		<% if @user.id == current_user.id %>
+		  <td><h1>My Lists</h1></td>
+		<% else %>
+		  <td><h1>Lists for <%= @user.name %> from Me</h1></td>
+		<% end %>
+		
+		  <td class="linktonew"><%= link_to 'New List', new_user_list_path(@user), :class => "modalbox" %></td>
+		  <td class="searchform"> <%= render 'search_form' %> </td>
+		</tr>
+	</table>
+  <div class="listhomepage">
+	<div class="content">
+		<table id="lists_search_results">
+		  	<%= render 'show_lists'%><br />
+		</table>
+	</div>
+
+	<% if !@friendfilter %>
+	  <%= link_to "Filter Friends", user_lists_path(@user, :friendfilter => "true"), :remote => true %>
+	<% else %>
+	  <%= link_to "Unfilter Friends", user_lists_path(@user), :remote => true %>
+	<% end %>
+
+    <% if @lists.count > 0 %>
+	<div class = "flickr_pagination">
+	 <%=will_paginate @lists %>
+	</div>
+	<% end %>
+  </div>
+</div>
+

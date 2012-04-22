@@ -1,0 +1,158 @@
+// Place all the styles related to the dashboards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dashboard .content {
+    background-color: white;
+    top: 5px;
+    width: 77%;
+    float: left;
+}
+
+.dashboard .content h1 {
+    margin: 0 0 1em 0;
+}
+
+.dashboard .content table {
+	margin: 0 2em 0 0;
+    width: 98%;
+}
+
+.dashboard .content .textarea {
+    width: 90%;
+}
+
+.dashboard .content .actions {
+    width: 10%;
+}
+
+.dashboard .content .field textarea {
+	border:1px solid #999999;
+    width: 98%;
+    height: 2.5em;
+    margin: 5px 0 5px -5px;
+    padding: 0.5em;
+    resize: none;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius:10px;
+
+    transition-property: all ease-out 0.5s;
+    -moz-transition: all ease-out 0.5s;
+    -webkit-transition: all ease-out 0.5s;
+    -o-transition: all ease-out 0.5s;
+}
+
+.dashboard .content .field textarea:focus {
+    outline: none;
+    background-color: #E0FFFF;
+}
+
+.dashboard .content .post_list {
+}
+
+.dashboard .content .post_list .post_info {
+    padding: 0.5em 0 0.5em 0;
+    width: 97%;
+    max-width: 97%;
+    word-wrap: break-word;
+    border-top: 1px solid #999999;
+    font-style:italic;
+}
+
+.dashboard .content .post_list .post_info .avatar {
+    float: left;
+    padding: 0 0.5em 0 0;
+}
+
+.dashboard .content .post_list .post_content {
+    padding: 0 0 2em 0;
+    width: 97%;
+    max-width: 97%;
+    word-wrap: break-word;
+    border-bottom: 1px solid #999999;
+}
+
+.dashboard .content .post_list .post_content .parent_post {
+    word-wrap: break-word;
+    margin: 0 5em 0 5em;
+    padding: 0.5em;
+    border: 1px solid #999999;
+}
+
+.dashboard .content .post_list .post_content .post {
+    word-wrap: break-word;
+    margin: 0 0 -1em 4.4em;
+    padding: 0 10em 0 0;
+}
+
+.dashboard .content .post_list .post_content .post_tasks {
+    float: right;
+}
+
+.dashboard .taskbar {
+    background-color: white;
+    top: 5px;
+    width: 23%;
+    height: 100%;
+    float: right;	
+}
+
+.dashboard .taskbar #upcoming_events {
+    table-layout: fixed;
+    width: 180px;
+}
+
+.dashboard .taskbar .upcoming_event td {
+    padding: 0;   
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dashboard .taskbar .upcoming_event td:last-child {
+    padding: 0;   
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90px;
+}
+
+.dashboard .taskbar #pending_events {
+    table-layout: fixed;
+    width: 180px;
+}
+
+.dashboard .taskbar .pending_event td {
+    padding: 0;   
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90px;
+}
+
+.dashboard .taskbar #reminders {
+    table-layout: fixed;
+    width: 180px;
+}
+
+.dashboard .taskbar .reminder td {
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90px;
+}
+
+.dashboard .taskbar .reminder td:last-child {
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 90px;  
+}
+
+.dashboard .taskbar div {
+    margin: 0 0 1em 0;
+}
+ 

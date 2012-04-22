@@ -1,0 +1,69 @@
+<% if signed_in? %>
+
+<% @url = request.fullpath %>
+<% @event_pending = Event.where("user_id = ? AND confirmed = ?", current_user.id, false) %>
+<% @user_pending = Relationship.where("(follower_id = ? OR followed_id = ?) AND confirmed = ?", current_user.id, current_user.id, false) %>
+
+  <nav class="sidebar">
+  	 <% if @url.include? "dashboard" %>
+	     <div class="sidebardashlink" id="current">
+	 <% else %>
+	     <div class="sidebardashlink">
+	 <% end %>
+     <%= link_to "Dashboard", dashboard_path %>
+	 </div>
+	 
+	 <% if @url.include? "lists" %>
+         <h2 class="sidebaritem" id="current">Lists</h2>
+     <% else %>
+         <h2 class="sidebaritem">Lists</h2>
+     <% end %>
+     <%= link_to "Add", new_user_list_path(current_user) %>
+     <%= link_to "View/Edit", user_lists_path(current_user) %>
+
+     <% if @url.include? "events" %>
+         <h2 class="sidebaritem" id="current">Events</h2>
+     <% else %>
+         <h2 class="sidebaritem">Events</h2>
+     <% end %>
+     <%= link_to "Add", new_user_event_path(current_user) %>
+     
+     <% if @event_pending.count == 0 %>
+       <%= link_to "View/Edit", user_events_path(current_user) %>
+     <% else %>
+      <%= link_to "View/Edit (#{pluralize(@event_pending.count, 'invite')})", user_events_path(current_user) %>
+     <% end %>
+
+     <% if @url.include? "reminders" %>
+         <h2 class="sidebaritem" id="current">Reminders</h2>
+     <% else %>
+         <h2 class="sidebaritem">Reminders</h2>
+     <% end %>
+     <%= link_to "Add", new_user_reminder_path(current_user) %>
+     <%= link_to "View/Edit", user_reminders_path(current_user) %>
+
+     <% if (@url.include? "add_friend") || (@url.include? "following") %>
+         <h2 class="sidebaritem" id="current">Friends</h2>
+     <% else %>
+         <h2 class="sidebaritem">Friends</h2>    
+     <% end %>
+     
+     <%= link_to "Add", add_friend_user_path(current_user) %>
+     
+     <% if @user_pending.count == 0 %>
+       <%= link_to "View/Edit", following_user_path(current_user) %>
+     <% else %>
+	   <%= link_to "View/Edit", following_user_path(current_user) %>
+	   <%= link_to "Confirm/Cancel #{pluralize(@user_pending.count, 'Invite')}", confirm_user_path(current_user) %>
+     <% end %>
+      
+     <% if @url.include? "statistics" %>
+         <div class="sidebarperstats" id="current">
+     <% else %>
+          <div class="sidebarperstats">   
+     <% end %>
+     <%= link_to "Personal Statistics", statistics_user_path(current_user) %>
+	 </div>
+
+  </nav>
+<% end %>

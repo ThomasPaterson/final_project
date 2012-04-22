@@ -1,0 +1,25 @@
+// Place all the styles related to the Reminders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reminderpages {
+  padding: 10px 0 0 10px;
+}
+
+.reminderpages h1 {
+  margin: 0 0 1em 0;
+}
+
+.reminderpages table {
+  width: 100%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.reminderpages table th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}

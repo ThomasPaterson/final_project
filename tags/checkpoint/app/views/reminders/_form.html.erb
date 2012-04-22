@@ -1,0 +1,44 @@
+<%= form_for(@reminder) do |f| %>
+<div class="reminderpages">
+  <% if @reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reminder.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @reminder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="reminder_name">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="reminder_description">
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </div>
+  <div class="time">
+    <p>
+      Date<br />
+      <%= f.date_select :time, :default => {:day => @day, :month => @month} %>
+    </p>
+    <p>
+      Time<br />
+      <%= f.time_select :time, :ignore_date => true %>
+    </p>
+  </div>
+
+
+  <input type="hidden" id="reminder_user_id" name="reminder[user_id]" value="<%= @user.id %>" />
+  <input type="hidden" id="reminder_poster_id" name="reminder[poster_id]" value="<%= current_user.id %>" />
+
+
+  <div class="actions">
+    <%= f.submit 'Create Reminder', {:class => 'submit_button'} %>
+  </div>
+</div>
+<% end %>
+

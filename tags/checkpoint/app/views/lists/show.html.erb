@@ -1,0 +1,24 @@
+<div class="listpages">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @list.name %>
+</p>
+
+
+<p>
+  <b>User:</b>
+  <%= @list.user_id %>
+</p>
+
+<p>
+  <b>Poster:</b>
+  <%= @list.poster_id %>
+</p></br>
+
+<%= render 'show_items' %>
+
+<%= link_to 'Edit', edit_user_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
+</div>

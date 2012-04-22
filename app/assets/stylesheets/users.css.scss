@@ -1,0 +1,149 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* ---------------- CSS for Friends Confirm/Cancel page ---------------- */
+
+.friendpages {
+  padding: 10px 0 0 10px;
+}
+
+.friendpages .content h1 {
+  padding: 0 0 1em 0;
+}
+
+.friendpages .content h2 {
+  clear: both;
+  float: left;
+  border-bottom: solid 1px black;
+  width: 35.5em;
+}
+
+.friendpages .content .new_invitations {
+  border-right: solid 1px black;
+}
+
+.friendpages .content tr td:first-child {
+  -moz-border-top-left-radius:10px;
+  -webkit-border-top-left-radius:10px;
+  border-top-left-radius:10px;
+  -moz-border-bottom-left-radius:10px;
+  -webkit-border-bottom-left-radius:10px;
+  border-bottom-left-radius:10px;
+  background-color: #eee;
+}
+
+.friendpages .content tr td:last-child {
+  -moz-border-top-right-radius:10px;
+  -webkit-border-top-right-radius:10px;
+  border-top-right-radius:10px;
+  -moz-border-bottom-right-radius:10px;
+  -webkit-border-bottom-right-radius:10px;
+  border-bottom-right-radius:10px;
+
+  background-color: #eee;
+}
+
+.friendpages .content p {
+  clear: both;
+  float: left;
+}
+
+.friendpages .content .pending_friend {
+  clear: both;
+  width: 35.5em;
+  height: 2.8em;
+  padding: 0.5em 0;
+}
+
+.friendpages .content .pending_friend .meta {
+  float:left;
+}
+
+.friendpages .content .pending_friend .tasks {
+  float:right;
+}
+
+.friendpages .content .pending_friend .tasks .pending_actions input {
+  width: 65px;
+}
+
+
+.friendpages form .new_relationship .edit_relationship {
+  padding: 0 0 15px 0;
+}
+
+/* ---------------- end CSS for Friends Confirm/Cancel page ---------------- */
+
+/* ---------------- CSS for Friends View/Edit page ---------------- */
+
+.following {
+  padding: 10px 0 0 10px;
+}
+
+.following .content h1 {
+  padding: 0 0 1em 0;
+}
+
+.following .content .friend {
+  clear: both;
+  width: 65%;
+  padding: 0.5em 0;
+  border-top: solid 1px black;
+}
+
+.following .content .friend .meta {
+  float:left;
+}
+
+.following .content .friend .friend_tasks {
+  clear: both;
+  float:left;
+  padding: 0 0 0 2.6em;
+}
+
+.following .content .friend .friend_tasks a {
+  padding: 0 0.5em 0 0;
+}
+
+.following .content .friend .tasks {
+  float:right;
+}
+
+#users_filter tr td {
+  padding: 0;
+}
+
+.all_users {
+  padding: 10px 0 0 10px;
+}
+
+.all_users .content {
+    background-color: white;
+    top: 5px;
+    width: 100%;
+    float: left;
+}
+
+.all_users .content h1 {
+  margin: 0 0 0.25em 0;
+  font-size: 25px;
+  width: 350px;
+}
+
+.edit_permissions {
+  padding: 10px 0 0 10px;
+}
+
+.edit_permissions .content {
+    background-color: white;
+    top: 5px;
+    width: 100%;
+    float: left;
+}
+
+.edit_permissions .content h1 {
+  margin: 0 0 0.25em 0;
+  font-size: 22px;
+  width: 400px;
+}

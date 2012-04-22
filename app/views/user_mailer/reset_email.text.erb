@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>New Password for <%= @user.name %></h1>
+    <p>
+      Your new password is <%= @password %><br/>
+      You should change this password next time you sign in<br/>
+    </p>
+    <p>
+      To sign in, just follow this link: <%= @url %>.
+    </p>
+  </body>
+</html>
+
+New Password for <%= @user.name %>
+===============================================
+ <p>
+Your new password is <%= @password %>.<br/>
+You should change this password next time you sign in<br/>
+</p>
+
+<p>
+  To sign in, just follow this link: <%= @url %>.
+</p>

@@ -1,0 +1,15 @@
+<div class="profile">
+  <div class="content">
+  	<h1>Update Profile</h1>
+
+	<%= render 'editform' %>
+
+	<% if false %>
+	  <% form_for @user, :html => { :multipart => true } do |editform| %>
+	    <%= editform.file_field :photo %>
+	  <% end %>
+    <% end %>
+
+    <%= link_to 'Back', @user %>
+  </div>
+</div>

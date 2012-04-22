@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Event Details</h1>
+
+<p>
+  <b>Name:</b>
+  <%= @event.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @event.description %>
+</p>
+
+<p>
+  <b>Created For:</b>
+  <%= User.find(@event.user_id).name %>
+</p>
+
+<p>
+  <b>Created By:</b>
+  <%= User.find(@event.poster_id).name %>
+</p>
+
+<p>
+  <b>Is public?</b>
+  <%= @event.is_public %>
+</p>
+
+<p>
+  <b>Created on:</b>
+  <%= nice_format(@event.created_at, current_user.time_zone) %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= nice_format(@event.start_at, current_user.time_zone) %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= nice_format(@event.end_at, current_user.time_zone) %>
+</p>

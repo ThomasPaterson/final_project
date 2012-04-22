@@ -1,0 +1,247 @@
+// Place all the styles related to the Lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listpages {
+  padding: 10px 0 0 10px;
+}
+
+.listpages h1 {
+  padding: 0 0 1em 0;
+}
+
+.listpages tr {
+  border-bottom: solid 1px black;
+}
+
+.listpages table {
+  width: 80%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+#head {
+  border-bottom: solid 1px black;
+}
+
+.listpages th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.listhomepage td.meta {
+  font-size: larger;
+  font-weight: bold;
+  width: 175px;
+  padding: 5px;
+}
+
+.listhomepage td.Show {
+  text-align: center;
+  font-size: x-large;
+  padding-top: 0.5em;
+  width: 600px;
+}
+
+.listhomepage td.tasks {
+  padding-top: 1em;
+}
+
+.listhomepage div.list_date {
+  font-size: smaller;
+  font-weight: normal;
+}
+
+.listhomepage td {
+  border: 1px solid #87AFC7;
+}
+
+
+.listhomepage tr {
+  background-color: #F4FFFF;
+  transition-property: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+}
+
+.listhomepage tr:hover {
+  background-color: #FFFFFF;
+}
+
+.listhomepage table {
+  margin-bottom: 5px;
+}
+
+#index_header {
+  width: 95%;
+}
+
+/* ---- CSS for list forms ---- */
+
+.listpages a.addField, a.removeField {
+  font-style: italic;
+}
+
+.listpages div.actions {
+  margin: 10px 0 10px 0;
+}
+
+.listpages div.deleteactions {
+  margin: 3px 0 8px 0;
+}
+
+.listpages div.editfield {
+  width: 300px;
+  padding: 5px 0 5px 5px;
+  border: 1px solid #87AFC7;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.listpages div.editfield fieldset {
+  margin-top: 5px;
+}
+
+.listpages div.nameFields {
+  margin-top: 20px;
+}
+
+.listpages div.nameFields div.selection {
+  margin: 5px 0 5px 0;
+}
+
+.listpages div.selection select:hover {
+  background-color: #E0FFFF;
+}
+
+.listpages form.new_item {
+  margin-top: 5px;
+}
+
+.listpages input {
+  transition-property: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -webkit-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+}
+
+.listpages input:focus {
+  background-color: #E0FFFF;
+}
+
+.listpages li {
+  margin-left: 15px;
+  list-style-type: circle;
+  transition-property: all ease-out 0.2s;
+  -moz-transition: all ease-out 0.2s;
+  -webkit-transition: all ease-out 0.2s;
+  -o-transition: all ease-out 0.2s;
+}
+
+.listpages li:hover {
+  color: #000099;
+}
+
+.listpages h2#newitemsh2 {
+  margin-top: 20px;
+}
+
+#lists_filter {
+  width: 270px;
+}
+
+#lists_filter #search_form {
+  float: left;
+}
+
+#lists_filter #search_clear {
+  float: left;
+}
+/* ---- CSS for item forms ---- */
+
+
+.listpages {
+  padding: 10px 0 0 10px;
+}
+
+.listpages h1 {
+  padding: 0 0 1em 0;
+}
+
+.listpages table {
+  width: 80%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.listpages th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.listhomepage td.meta {
+  font-size: larger;
+  font-weight: bold;
+  width: 175px;
+  padding: 5px;
+}
+
+.listshow td.item_contents {
+  text-align: center;
+  width: 600px;
+  
+}
+
+.listshow td.item_contents a {
+  opacity: 0.0;
+  
+}
+
+.listshow td.item_contents:hover a {
+  opacity: 1.0;
+  
+}
+
+.listshow td.item_contents li {
+  list-style: none;
+}
+
+.listshow .item_name {
+  padding: 0.25em 0 0.1em 0;
+  font-size: x-large;
+}
+
+.listshow .tags {
+  font-size: x-small;
+}
+
+.listshow td {
+  border: 1px solid #87AFC7;
+}
+
+
+.listshow tr {
+  background-color: #F4FFFF;
+  transition-property: all ease-out 0.3s;
+  -moz-transition: all ease-out 0.3s;
+  -webkit-transition: all ease-out 0.3s;
+  -o-transition: all ease-out 0.3s;
+}
+
+.listshow tr:hover {
+  background-color: #FFFFFF;
+}
+
+.listshow table {
+  margin-bottom: 5px;
+}
+
+

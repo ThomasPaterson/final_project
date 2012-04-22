@@ -1,0 +1,33 @@
+ <div class="friendpages">
+
+  <div class = "flickr_pagination">
+    <%= will_paginate %>
+  </div>
+
+  <% for user in @users %>  
+
+    <% unless current_user?(user) or user.permission_level == 10 %>
+      
+    	<%= render user %>
+    	<% if current_user.following?(user) %>
+    		<%= form_for current_user.relationships.find_by_followed_id(user),
+           	:html => { :method => :delete }, :remote => true do |f| %>
+           		
+          <% if current_user.confirmed_friend(user) %>
+            <div class="actions"><%= f.submit "Unfollow" %></div>
+          <% else %>
+            <div class="actions"><%= f.submit "Remove Invite" %></div>
+          <% end %>
+        <% end %>  
+      <% else %>
+        <%= form_for current_user.relationships.build(:followed_id => user.id), :remote => true do |f| %>
+    		  <div><%= f.hidden_field :followed_id %></div>
+    		  <div class="actions"><%= f.submit "Follow" %></div>
+    	  <% end %>
+      <% end %>
+    <% end %> 
+  <% end %> 
+  <div class = "flickr_pagination">
+    <%= will_paginate %>
+  </div>
+</div>

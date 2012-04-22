@@ -1,0 +1,17 @@
+<table id="users_filter">
+	<tr>
+		<td>
+			<%= form_tag add_friend_user_path, :remote => true, :method => :get, :id => "search_form" do %>
+			    <br />Username or Email<br />
+			    <%= text_field_tag "user[name]", nil, :id => "user_name", :placeholder => "Search" %>
+			    <%= submit_tag "Search for Friends", {:name => :commit, :class => 'submit_button'} %>
+			<% end %>
+		</td>
+		<td>
+			<br /><br />
+			<%= form_tag add_friend_user_path, :remote => true, :method => :get, :id => "search_clear" do %>
+			    <%= submit_tag "Clear", {:name => :commit, :class => 'submit_button'}  %>
+			<% end %>
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,54 @@
+
+<div class="events">
+    <div class="content">
+
+        <h1>
+            <% if @user == nil %>
+                My Events
+            <% else %>
+                Events for <%= @user.name %>
+            <% end %>
+        </h1>
+
+        <h2>Calendar</h2>
+        <div class="calendar">
+            <%= raw(event_calendar) %>
+        </div>
+
+        <div class="eventlist" >
+
+            <h2>All Events</h2>
+
+            <table class="list">
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Starting on</th>
+                <th>Until</th>
+                <th>Created By</th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+
+            <% @events.each do |event| %>
+              <tr>
+                <td><%= event.name %></td>
+                <td><%= event.description %></td>
+                <td><%= nice_format(event.start_at, current_user.time_zone) %></td>
+                <td><%= nice_format(event.end_at, current_user.time_zone) %></td>
+                <td><%= User.find(event.poster_id).name %></td>
+                <!-- when clicked, display a lightbox instead of navigating to the new page -->
+                <td><%= link_to 'Edit', edit_event_path(event), :class => "modalbox" %></td>
+                <td><%= link_to "Delete", {:controller => "events", :action => "destroy_event", :id => event}, :onclick => "return confirm('Delete this event?')", :method => :delete %></td>
+              </tr>
+            <% end %>
+            </table>
+        </div>
+    </div>
+    <div class="taskbar" >
+        <h2>
+            <%= link_to 'Add an Event', new_event_path %>
+        </h2>
+    </div>
+</div>

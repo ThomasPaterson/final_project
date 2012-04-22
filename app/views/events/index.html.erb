@@ -1,0 +1,57 @@
+<div class="events">
+    <div class="content">
+
+        <% if @user == nil || @user.id == current_user.id %>
+            <h1>My Events</h1>
+            To create an event, click on a day in the calendar below.<br /><br />
+        <% else %>
+            <h1>Events for <%= @user.name %></h1>
+        <% end %>
+        
+        <h2>Calendar</h2>
+        <div class="calendar">
+            <% if @user == nil or @user.name == current_user.name %>
+                <%= raw(event_calendar(user_event_calendar_opts)) %>
+            <% else %>
+                <%= raw(event_calendar(event_calendar_opts)) %>
+            <% end %>
+        </div>
+
+        <div class="eventlist" >
+            <%= render 'upcoming_events_search_form' %>
+            
+            <% if @pending != nil and @pending.count > 0 %>
+                <h2>Pending Events</h2>
+
+                <table class="pending_events">
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Starting on</th>
+                    <th>Until</th>
+                    <th>Created By</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+
+                <% @pending.each do |event| %>
+                  <tr>
+                    <td><%= event.name %></td>
+                    <td><%= event.description %></td>
+                    <td><%= nice_format(event.start_at, current_user.time_zone) %></td>
+                    <td><%= nice_format(event.end_at, current_user.time_zone) %></td>
+                    <td><%= User.find(event.poster_id).name %></td>
+                    <!-- when clicked, display a lightbox instead of navigating to the new page -->
+                    <% if event.user_id == current_user.id or event.poster_id == current_user.id or admin? %>
+                        <% if not event.confirmed %>
+                            <td><%= link_to "Confirm", confirm_user_event_path(current_user, event), :onclick => "return confirm('Confirm attendance to this event?')" %></td>
+                            <td><%= link_to "Decline", decline_user_event_path(current_user, event), :onclick => "return confirm('Not attending this event?')", :method => :delete %></td>
+                        <% end %>
+                    <% end %>
+                  </tr>
+                <% end %>
+                </table>
+            <% end %>
+        </div>
+    </div>
+</div>

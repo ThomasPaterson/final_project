@@ -1,0 +1,9 @@
+<div id="reminders_filter">
+	<%= form_tag user_reminders_path(@user, :friendfilter => @friendfilter), :remote => true, :method => :get, :id => "search_form" do %>
+	    <%= text_field_tag "reminder[name]", nil, :id => "reminder_name", :placeholder => "Filter" %>
+	    <%= submit_tag "Filter", {:name => :commit, :class => 'submit_button', :remote => true} %>
+	<% end %>
+	<%= form_tag user_reminders_path(@user, :friendfilter => @friendfilter), :remote => true, :method => :get, :id => "search_clear" do %>
+	    <%= submit_tag "Clear", {:name => :commit, :class => 'submit_button', :remote => true}  %>
+	<% end %>
+</div>

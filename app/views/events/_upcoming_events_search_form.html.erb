@@ -1,0 +1,13 @@
+<div id="events_filter">
+    <h2>Upcoming Events</h2>
+	<%= form_tag user_events_path(current_user), :remote => true, :method => 'get', :id => "search_form" do %>
+	    <%= text_field_tag :search, params[:search], :id => "search", :placeholder => "Filter" %>
+	    <%= hidden_field_tag :filter_type, params[:filter], :value => "filter" %>
+	    <%= submit_tag "Filter", :name => nil,:remote => true %>
+	<% end %>
+	<%= form_tag user_events_path(current_user), :remote => true, :method => 'get', :id => "search_clear" do %>
+	    <%= submit_tag "Clear", :name => nil,:remote => true %>
+	<% end %>
+</div>
+
+<div id="upcoming_events_results"><%= render 'upcoming_events_results' %></div>

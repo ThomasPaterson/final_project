@@ -1,0 +1,15 @@
+<tr class="tag">
+    <% if tag.user.name == current_user.name %>
+    <td>Me</td>
+	<% else %>
+	<td><%= tag.user.name %></td>
+	<% end%>   
+	
+    <% if tag.event_id == 0 %>
+    <td><%= link_to "#{tag.item.list.name}", tag.item.list %></td>
+	<% else %>
+	<td><%= link_to "#{tag.event.name}", tag.event %></td>
+	<% end%>   
+<tr class="tag"> 
+
+

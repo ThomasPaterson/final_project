@@ -1,0 +1,82 @@
+<% if signed_in? %>
+  <div class="dashboard">
+
+    <div class="content">
+      <h1>My Dashboard</h1>
+
+      <h2> New Post </h2>
+      <%= render 'posts/form' %>
+
+      <h2> Latest Posts </h2>
+
+      <p>
+        <b>Last updated on:</b>
+        <%= nice_format(@dashboard.updated_at, current_user.time_zone) %>
+      </p>
+
+      <div class = "flickr_pagination">
+       <%=will_paginate @posts %>
+      </div>
+
+      <div class="post_list">
+        <%= render 'post_list' %>
+      </div>
+
+      <div class = "flickr_pagination">
+       <%=will_paginate @posts %>
+      </div>
+    </div>
+    
+    <div class="taskbar">
+      <div>
+        <h2>Upcoming Events</h2>
+        <% if @events.count > 0 %>
+          <% @events.each do |event| %>
+            <table id="upcoming_events">
+            <tr class="upcoming_event">
+              <td><%= dash_nice_format(event.start_at, current_user.time_zone) %>: </td>
+              <td><%= link_to event.name.slice(0,20), user_event_path(current_user, event), :class => "modalbox" %></td>
+            </tr>
+            </table>
+          <% end %>
+        <% else %>
+          You have no upcoming events.
+        <% end %>
+      </div>
+      <div>
+        <h2>Pending Events</h2>
+        <% if @pending_events.count > 0 %>
+          <% @pending_events.each do |pending| %>
+            <table id="pending_events">
+            <tr class="pending_event">
+              <td><%= dash_nice_format(pending.start_at, current_user.time_zone) %>: </td>
+              <td><%= link_to pending.name.slice(0,20), user_event_path(current_user, pending), :class => "modalbox" %></td>
+            </tr>
+            </table>
+          <% end %>
+        <% else %>
+          You have no pending events.
+        <% end %>
+      </div>
+
+      <div>
+        <h2>Reminders</h2>
+        <% if @reminders.count > 0 %>
+          <% @reminders.each do |reminder| %>
+            <table id="reminders">
+            <tr class="reminder">
+              <td><%= dash_nice_format(reminder.time, current_user.time_zone) %>: </td>
+              <td><%= link_to reminder.name.slice(0,20), user_reminder_path(@user, reminder), :class => "modalbox" %></td>
+            </tr>
+            </table>
+          <% end %>
+        <% else %>
+          You have no pending reminders.
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p>Welcome to our site!</p>
+  <p>You need to be logged in to access site features.</p>
+<% end %>

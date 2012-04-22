@@ -1,0 +1,38 @@
+<% if @user.id == current_user.id %>
+<div class="reminderpages">
+<h1>My Reminders</h1>
+<% else %>
+<h1>Reminders for <%= @user.name %> from Me</h1>
+<% end %>
+<table>
+  <tr>
+    <th>Reminder</th>
+    <th>Posted By</th>
+    <th>Time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reminders.each do |reminder| %>
+  <tr>
+    <td><%= reminder.name %></td>
+	  <% if reminder.poster_id == current_user.id %>
+		<td>Me</td>
+      <% else %>
+		<td><%= User.find(reminder.poster_id).name %></td>
+      <% end %>
+    <td><%= nice_format(reminder.time, current_user.time_zone) %></td>
+    <td><%= link_to 'Show', reminder, :class => "modalbox", :remote => true  %></td>
+    <td><%= link_to 'Edit', edit_user_reminder_path(@user, reminder), :class => "modalbox", :remote => true %></td>
+    <td><%= link_to "Delete", {:action => "destroy_reminder", :id => reminder}, :onclick => "return confirm('Are you sure?')" %></td>
+
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reminder', new_user_reminder_path(@user), :class => "modalbox", :remote => true  %>
+</div>

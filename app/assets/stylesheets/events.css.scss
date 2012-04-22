@@ -1,0 +1,233 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.events .content form .selection {
+  padding: 0;
+}
+
+.events .content form .username {
+  padding: 0;
+}
+
+.events .content {
+    background-color: white;
+    top: 5px;
+    float: left;
+}
+
+.events .content h1 {
+  margin: 0 0 1em 0;
+  font-size: 25px;
+  padding-right: 3em;
+}
+
+.events .content table {
+	margin: 0 0 0 0;
+}
+
+.content .new_event .event_description textarea {
+  border:1px solid #999999;
+  width: 300px;
+  height: 100px;
+  margin:5px 0;
+  padding:3px;
+  resize: none;
+
+  transition-property: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -webkit-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+}
+
+.content .new_event .event_description textarea:focus {
+    background-color: #E0FFFF;
+}
+
+.content .new_event .event_name input {
+  border:1px solid #999999;
+  width: 300px;
+  margin:5px 0;
+  padding:3px;
+}
+
+.content .new_event .event_tags input {
+  border:1px solid #999999;
+  width: 300px;
+  margin:5px 0;
+  padding:3px;
+}
+
+.content .edit_event .event_description textarea {
+  border:1px solid #999999;
+  width: 300px;
+  height: 100px;
+  margin:5px 0;
+  padding:3px;
+  resize: none;
+
+  transition-property: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -webkit-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+}
+
+.content .edit_event .event_description textarea:focus {
+    background-color: #E0FFFF;
+}
+
+.content .edit_event input:focus {
+    background-color: #E0FFFF;
+}
+
+.content .edit_event select:focus {
+    background-color: #E0FFFF;
+}
+
+
+.content .edit_event .event_name input {
+  border:1px solid #999999;
+  width: 300px;
+  margin:5px 0;
+  padding:3px;
+}
+
+.content .edit_event .event_tags input {
+  border:1px solid #999999;
+  width: 300px;
+  margin:5px 0;
+  padding:3px;
+}
+
+.events .content .calendar {
+	width: 95%;
+}
+
+.events .taskbar {
+    background-color: white;
+    top: 5px;
+    margin: 0 0 0 1em;
+    float: right;	
+}
+
+.events .taskbar div {
+    margin: 0 0 1em 0;
+}
+
+.user_cal {
+    background-color: white;
+    padding: 10px 10px;
+    top: 5px;
+    width: 80%;
+}
+
+.eventlist {
+    margin: 10px 0 0 0;
+    padding: 10px 0 0 0;
+    border-top:1px solid #999999;
+}
+
+.events .eventlist table {
+  width: 100%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.events .eventlist .list th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.events .eventlist .pending th {
+  table-layout: fixed;
+}
+
+.event_form_header {
+  padding: 5px 5px 0 5px;
+}
+
+.new_event table td:first-child {
+  padding-right: 1.5em;
+}
+
+.events p.warning {
+  color: red;
+  font-style: italic;
+}
+
+#events_filter {
+  padding: 2em 0 0 0;
+}
+
+#events_filter h2 {
+  float: left;
+  padding: 0.3em 38em 0 0;
+}
+
+#events_filter #search_form {
+  float: left;
+}
+
+#search {  
+  transition-property: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -webkit-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+}
+
+#search:focus {  
+    background-color: #E0FFFF;
+}
+
+.ec-event a {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.events .content .edit_event .invite_option {
+  padding: 0 0.5em 0 0.5em;
+  width: 200px;
+}
+
+.events .content .edit_event .invite_checkbox {
+  margin: 19px 0;
+  float: left;
+}
+
+.events .content .edit_event .invite_info {
+  float: right;
+  width: 150px;
+}
+
+.events .content .edit_event .invite_info .avatar {
+  margin: 0 0.5em;
+  padding: 0;
+  float: left;
+}
+
+.events .content .edit_event .invite_info .meta {
+  margin: 16px 0;
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ec-day-bg {
+  transition-property: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -webkit-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+}
+
+.ec-day-bg:hover {
+  background-color: #E0FFFF;
+}
+
+.ec-today-bg:hover {
+  background-color: #FFFF00;
+}

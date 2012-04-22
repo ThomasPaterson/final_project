@@ -1,0 +1,13 @@
+<li>
+  <div class="item_name">
+  <%= item.content %>  
+  <% @tags = item.get_tags %>
+  </div>
+  
+  <div class="tags">
+   <% for tag in @tags %>  
+      <%= link_to "#{tag.name}", user_tag_path(current_user, tag) %>
+   <% end %> 
+ </div>
+  
+</li>

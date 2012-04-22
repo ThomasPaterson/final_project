@@ -1,0 +1,25 @@
+<% require 'stat_array' %>
+
+<div id="chart"></div>
+
+<%= raw Seer::init_visualization -%>
+<%= raw Seer::visualize(
+      tag_counts, 
+      :as => :line_chart,
+      :in_element =>'chart', 
+      :series => {
+        :series_label => 'name',
+        :data_label => 'date',
+        :data_method => 'count',
+        :data_series => tag_counts.map{|s| s.date_count}
+      },
+      :chart_options => {
+        :height => 500,
+        :width => 680 ,
+        :axis_font_size => 14,
+        :colors => colors,
+        :title_x => 'date',
+        :title_y => 'quantity'
+      }
+    )
+ -%>

@@ -1,0 +1,19 @@
+<table class="Friends" summary="Friend List">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      
+
+    </td>
+    </tr>
+    <tr>
+    <td class="sidebar round">
+      <%= render 'show_followers' %><br />
+
+
+    </td>
+  </tr>
+</table>

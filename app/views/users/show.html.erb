@@ -1,0 +1,64 @@
+<div class="profile">
+  <div class="content">
+    <% if is_banned(@user) %>
+      <h1>
+        <%= avatar_for @user, 75 %> 
+        <%= @user.name %> 
+      </h1>
+      <br />
+      <b><%= @user.name %>'s account has been disabled.</b>
+    <% else %>
+      <table class="user_info">
+        <tr>
+          <td class="avatar_td"><%= avatar_for @user, 75 %></td>
+          <td class="meta_td">
+            <h1>
+              <%= @user.name %>
+              <% if current_user.following?(@user) %>
+                <%= form_for current_user.relationships.find_by_followed_id(@user),
+                    :html => { :method => :delete }, :remote => true do |f| %>
+                  <% if current_user.confirmed_friend(@user) %>
+                    <%= f.submit "Unfollow" %>
+                  <% else %>
+                    <%= f.submit "Remove Invite" %>
+                  <% end %>
+                <% end %>  
+              <% elsif @user == current_user %>
+                <%= link_to 'Edit Profile', edit_user_path(@user), :class => "edit_link" %>
+              <% else %>
+                <%= form_for current_user.relationships.build(:followed_id => @user.id), :remote => true do |f| %>
+                  <%= f.hidden_field :followed_id %>
+                  <%= f.submit "Follow" %>
+                <% end %>
+              <% end %>
+            </h1>
+            
+            <% if not @user.fname.nil? and @user.fname != "" %>
+              <%= @user.fname %> 
+              <% if not @user.lname.nil? and @user.lname != "" %>
+                <%= @user.lname %>
+              <% end %>
+              <br />
+            <% elsif not @user.lname.nil? and @user.lname != "" %>
+              <%= @user.lname %><br />
+            <% end %>
+            
+            <b>Email: </b><%= @user.email %><br />
+            <b>Time zone: </b><%= @user.time_zone %><br />
+            <b>User level: </b><%= readable_permission_level(@user.permission_level) %><br />
+          </td>
+        </tr>
+      </table>
+      <br />
+
+      <% if @user == current_user or current_user.confirmed_friend(@user) or admin? %>
+        <h2> Create a Post </h2>
+        <%= render 'posts/form' %>
+        <h2>Latest posts</h2>
+        <div class="post_list">
+          <%= render 'post_list' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

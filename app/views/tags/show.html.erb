@@ -1,0 +1,51 @@
+<div class="tagpages">
+
+<% if @list_tags.count != 0 && !@listfilter %>
+
+	<h1>Items with tag <%= @tag.name %></h1>
+	
+	<table>
+	  <tr>
+
+<div class="content">	  
+	
+	<% @list_tags.includes(:item, :user, :event).each do |tag| %>
+	  <%= render tag %>
+	<% end %>
+	</tr>
+	</table>
+
+<% end %>
+
+<% if @event_tags.count != 0 && !@eventfilter %>
+	
+<h1>Events with tag <%= @tag.name %></h1>
+
+<table>
+  <tr>
+
+
+
+<% @event_tags.includes(:item, :user, :event).each do |tag| %>
+  <%= render tag %>
+<% end %>
+  </tr>
+</table>
+
+<% end %>
+
+
+<% if !@listfilter %>
+  <%= link_to "Filter Items", user_tag_path(current_user, @tag, :listfilter => "true", :eventfilter => "#{@eventfilter}"), :remote => true %>
+<% else %>
+  <%= link_to "Unfilter Items", user_tag_path(current_user, @tag, :listfilter => "false", :eventfilter => "#{@eventfilter}"), :remote => true %>
+<% end %>
+
+
+<% if !@eventfilter %>
+  <%= link_to "Filter Events", user_tag_path(current_user, @tag, :listfilter => "#{@listfilter}", :eventfilter => "true"), :remote => true %>
+<% else %>
+  <%= link_to "Unfilter Events", user_tag_path(current_user, @tag, :listfilter => "#{@listfilter}", :eventfilter => "false"), :remote => true %>
+<% end %>
+</div>
+</div>

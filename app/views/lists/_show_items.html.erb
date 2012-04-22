@@ -1,0 +1,14 @@
+<% @items.each do |item| %>  
+	<tr class="item_table">
+	  <td class="item_contents">
+        <%= render item %>
+      </td>
+      <td class="tasks">
+	    <%= form_for item, :html => { :method => :delete }, :remote => true do |f| %>
+	    <div class="deleteactions"><%= f.submit "Delete Item" %></div>
+	    <% end %>
+	  </td>
+	</tr>
+<% end %> 
+
+

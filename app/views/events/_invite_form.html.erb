@@ -1,0 +1,33 @@
+<%= form_for(@event) do |f| %>
+	<% @count = 0 %>
+  <table>
+    <% @friends.each do |friend| %>
+      <% if @count == 0 %>
+        <tr>
+      <% end %>
+      <% if current_user.confirmed_friend(friend) %>
+      	<td>
+	        <input class="invite_checkbox" type="checkbox" name="invitee[]" value="<%= friend.name %>" />
+	        <div class="invite_info">
+		    	<div class="avatar"><%= avatar_for User.find(friend.id) %></div>
+		    	<div class="meta"><%= link_to friend.name, friend %></div>
+		    </div>
+	    </td>
+      <% end %>
+      <% @count = @count + 1 %>
+      <% if @count == 5 %>
+      	<% @count = 0 %>
+        </tr>
+      <% end %>      
+    <% end %>
+
+    <tr>
+      <td>
+		<input type="hidden" id="type" name="type" value="invite" />
+		<div class="actions">
+		  <%= f.submit 'Invite Friends', {:class => 'submit_button'} %>
+		</div>
+	  </td>
+	</tr>
+  </table>
+<% end %>

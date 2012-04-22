@@ -1,0 +1,43 @@
+<%= form_for(@user, :url => statistics_user_path(current_user), :method => :get) do |f| %>
+
+  <div class="filter_info">
+    <p>
+      <%= check_box_tag("eventfilter", "true", @eventfilter) %> Event Filter<br />
+    </p>
+    <p>
+      <%= check_box_tag("listfilter", "true", @listfilter) %> List Filter<br />
+    </p>
+
+    <p>
+    
+    <% if @time_units == "Month" %>
+      <%= select_tag "[time_unit]", "<option>Week</option><option selected=\"selected\">Month</option><option>Year</option>".html_safe %> Choose Timeframe<br />
+    <% elsif @time_units == "Week" %>
+      <%= select_tag "[time_unit]", "<option selected=\"selected\">Week</option><option>Month</option><option>Year</option>".html_safe %> Choose Timeframe<br />
+    <% else %>
+      <%= select_tag "[time_unit]", "<option>Week</option><option>Month</option><option selected=\"selected\" >Year</option>".html_safe %> Choose Timeframe<br />
+    <% end %>
+
+    </p>
+    
+    
+  <div class="nameFields">
+      Add tags to filter:<br />
+      <div class="selection"><label class="usernames">Tags <select name="tagfilter[]">
+          <option value="">Select a tag to filter</option>
+        <% @filter_tag_counts.each do |tag| %>
+            <option value="<%= tag.name %>"><%= tag.name.slice(0, 20) %></option>
+        <% end %>
+      </select></label></div>
+  </div>
+  <%= link_to 'Add another tag', "#", :class => "addField", :onclick => "return false;" %><br />
+  
+  <input type="hidden" id="linefilter" name="linefilter" value= "<%= @linefilter %>" />
+  <input type="hidden" id="time" name="time" value= "<%= @time %>" />
+  
+    <div class="actions">
+     <%= f.submit 'Filter', {:class => 'submit_button', :remote => true} %>
+    </div>
+    
+  </div>
+<% end %>

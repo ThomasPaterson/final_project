@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Event Details</h1>
+
+<p>
+  <b>Name:</b>
+  <%= @event.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @event.description %>
+</p>
+
+<p>
+  <% if @event.user_id == @event.poster_id %>
+    <b>You</b> created this event
+  <% else %>
+    <b>Created for </b>
+    <%= User.find(@event.user_id).name %>
+    <b> by </b>
+    <%= User.find(@event.poster_id).name %>
+  <% end %>
+  <b> on </b>
+  <%= nice_format(@event.created_at, current_user.time_zone) %>
+</p>
+
+<p>
+  <b>Event Tags:</b>
+<% @tags = @event.get_tags %>
+<% for tag in @tags %>
+  <%= link_to "#{tag.name}", user_tag_path(current_user, tag) %>  
+<% end %> 
+</p>
+
+<p>
+  <% if @event.is_public %>
+    <p>Anyone can see this event.</p>
+  <% else %>
+    <p>Only you may view this event.</p>
+  <% end %>
+</p>
+
+<p>
+  <b>This event starts on </b>
+  <%= nice_format(@event.start_at, current_user.time_zone) %>
+</p>
+
+<p>
+  <b>This event ends on </b>
+  <%= nice_format(@event.end_at, current_user.time_zone) %>
+</p>
+
+<% if @event.confirmed %>
+  <div>
+    <br />
+    <%= link_to 'Edit Event', edit_user_event_path(current_user, @event), :class => "modalbox" %> | 
+    <%= link_to "Delete", {:controller => "events", :action => "destroy_event", :user_id => current_user, :id => @event.id}, :onclick => "return confirm('Delete this event?')", :method => :delete %>
+  </div>
+<% else %>
+  <br />
+  <div>
+    <%= link_to "Confirm", confirm_user_event_path(current_user, @event), :onclick => "return confirm('Confirm attendance to this event?')" %> | 
+    <%= link_to "Decline", decline_user_event_path(current_user, @event), :onclick => "return confirm('Not attending this event?')", :method => :delete %>
+  </div>
+<% end %>

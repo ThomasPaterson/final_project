@@ -1,0 +1,25 @@
+// Place all the styles related to the Lists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listpages {
+  padding: 10px 0 0 10px;
+}
+
+.listpages h1 {
+  padding: 0 0 10px 0;
+}
+
+.listpages table {
+  width: 80%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.listpages th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}

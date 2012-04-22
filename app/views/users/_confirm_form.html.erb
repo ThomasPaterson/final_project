@@ -1,0 +1,62 @@
+<table>
+	<tr>
+		<td class="new_invitations"> 
+			<h2>New Invites</h2>
+			 
+			<% hasConfirmations = false %>
+
+			 <% @users.each do |user| %>  
+				<% if !current_user.confirmed_invite(user) %>
+					<% hasConfirmations = true %>
+					<div class="pending_friend">
+						<div class="meta">
+							<%= render user %>
+					   	</div>
+
+					   	<div class="tasks">
+						    <%= form_for current_user.relationships.find_by_follower_id(current_user),
+						             	:html => { :method => :delete }, :remote => true do |f| %>
+						    	<div class="pending_actions"><%= f.submit "Decline" %></div>
+						  	<% end %> 
+
+							<%= form_for current_user.relationships.find_by_followed_id(user), :remote => true do |f| %>
+						  		<div class="pending_actions"><%= f.submit "Accept" %></div>
+							<% end %>
+						</div>
+					</div>	
+				<% end %>
+			<% end %> 
+
+			<% if not hasConfirmations %>
+				<p>You currently have no pending invitations from other users.</p>
+			<% end %>
+		</td>
+		<td class="your_invitations">
+			<h2>Your Invitations</h2>
+
+			<% hasInvitations = false %>
+
+			<% @users.each do |user| %>  
+				<%if !current_user.confirmed_friend(user) and current_user.confirmed_invite(user) %>
+					<% hasInvitations = true %>
+					<div class="pending_friend">
+						<div class="meta">
+							<%= render user %>
+						</div>
+
+						<div class="tasks">
+							<%= form_for current_user.relationships.find_by_follower_id(current_user),
+					             	:html => { :method => :delete }, :remote => true do |f| %>
+					    		<div class="pending_actions"><%= f.submit "Cancel" %></div>
+							<% end %>
+						</div>
+					</div>
+				<% end %>	
+			<% end %>
+
+			<% if not hasInvitations %>
+				<p>You currently have no pending invitations to other users.</p>
+			<% end %>
+		</td>
+	</tr>
+</table>

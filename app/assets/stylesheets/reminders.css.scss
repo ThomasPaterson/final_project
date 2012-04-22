@@ -1,0 +1,151 @@
+// Place all the styles related to the Reminders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reminderpages {
+  padding: 10px 0 0 10px;
+}
+
+.reminderpages h1 {
+  margin: 0 0 1em 0;
+}
+
+.reminderpages table {
+  width: 100%;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.reminderpages table th {
+  margin: 0 5px 0 5px;
+  background-color: #C6D5ED;
+  border: solid 1px black;
+  empty-cells: hide;
+  border-collapse:separate;
+}
+
+.reminderpages div.reminder_name {
+  margin: 0 0 4px 0;
+}
+
+.reminderpages div.reminder_description {
+  margin: 0 0 4px 0;
+}
+
+.reminderpages div.time {
+  margin: 0 0 4px 0;
+}
+
+.reminderpages div.nameFields {
+  margin: 10px 0 10px 0;
+}
+
+.reminderpages .nameFields div.selection {
+  margin: 3px 0 3px 0;
+}
+
+.reminderpages div.actions {
+  margin: 10px 0 0 0;
+}
+
+/* ---------------- CSS for reminder Index page ---------------- */
+
+.index {
+  padding: 10px 0 0 10px;
+}
+
+.index h1 {
+  margin: 0 0 1em 0;
+}
+
+.index td.linktonew a {
+  font-weight: bold;
+  font-size: larger;
+  color: #555;
+  transition-property: all ease-out 0.2s;
+  -moz-transition: all ease-out 0.2s;
+  -webkit-transition: all ease-out 0.2s;
+  -o-transition: all ease-out 0.2s;
+}
+
+.index a:hover {
+  background-color: transparent;
+  color: #bbb;
+}
+
+.index td.linktonew {
+  text-align: right;
+  padding-right: 20px;
+}
+
+.index td.searchform {
+  width: 265px;
+}
+
+.index .content .reminder {
+  clear: both;
+  width: 94%;
+  padding: 0.5em 0;
+  border-top: solid 1px black;
+}
+
+.index .content .reminder .meta {
+  float:left;
+  padding: 0 3.4em 0 0 ;
+}
+
+.index .content .reminder .reminder_tasks {
+  clear: both;
+  float:left;
+  padding: 0 0 0 2.6em;
+}
+
+.index .content .reminder .reminder_tasks a {
+  padding: 0 0.5em 0 0;
+}
+
+.index .content .reminder .Show a {
+  font-size:x-large;
+  color:#1100cc;
+  text-decoration: none;
+
+}
+
+.index .content .reminder .Show {
+  width: 300px;
+  padding: 0;
+  margin: 0;
+  display:inline;
+}
+
+
+.index .content .reminder .Show a:hover {
+  color:#110099;
+  text-decoration: underline;
+}
+
+.index .content .reminder .reminder_content {
+  display:inline;
+}
+
+.index .content .reminder .date {
+  font-size:x-large;
+}
+
+.index .content .reminder .tasks {
+  font-size:large;
+  float: right;
+  display: inline;
+}
+
+#reminders_filter {
+  width: 270px;
+}
+
+#reminders_filter #search_form {
+  float: left;
+}
+
+#reminders_filter #search_clear {
+  float: left;
+}

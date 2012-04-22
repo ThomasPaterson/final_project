@@ -1,0 +1,54 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<% if not @events.nil? %>
+	<% if @events.count > 0 %>
+        <br />
+		<div class = "flickr_pagination">
+			<%=will_paginate @events %>
+		</div>
+
+		<% if not @query.nil? %>
+			Upcoming events containing "<%= @query %>":
+		<% end %>
+
+        <table class="list">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Starting on</th>
+            <th>Until</th>
+            <th>Created By</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.description %></td>
+            <td><%= nice_format(event.start_at, current_user.time_zone) %></td>
+            <td><%= nice_format(event.end_at, current_user.time_zone) %></td>
+            <td><%= User.find(event.poster_id).name %></td>
+            <!-- when clicked, display a lightbox instead of navigating to the new page -->
+            <% if event.user_id == current_user.id or event.poster_id == current_user.id %>
+                <td><%= link_to 'Send Invites', invite_user_event_path(current_user, event), :class => "modalbox" %></td>
+            <% end %>
+            <% if event.user_id == current_user.id or event.poster_id == current_user.id or admin? %>
+                <td><%= link_to 'Edit', edit_user_event_path(current_user, event), :class => "modalbox" %></td>
+                <td><%= link_to "Delete", {:controller => "events", :action => "destroy_event", :user_id => current_user, :id => event}, :onclick => "return confirm('Delete this event?')", :method => :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </table>
+
+		<div class = "flickr_pagination">
+			<%=will_paginate @events %>
+		</div>
+	<% elsif not @query.nil? %>
+		<br /><p>No upcoming events found containing "<%= @query %>".</p><br />
+	<% else %>
+        <br /><p>No upcoming events to display.</p><br />
+	<% end %>
+<% end %>
